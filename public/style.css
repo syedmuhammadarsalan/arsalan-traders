@@ -1,0 +1,298 @@
+:root {
+  --bg: #F5F4EE;
+  --surface: #FFFFFF;
+  --ink: #1F2A1D;
+  --ink-soft: #5B6455;
+  --line: #DEDCCE;
+  --primary: #35502E;
+  --primary-soft: #6B8F5E;
+  --amber: #B9791C;
+  --amber-bg: #FBF0DC;
+  --red: #A13A2E;
+  --red-bg: #FBE7E2;
+  --green: #3C7A3F;
+  --green-bg: #E5F1E2;
+  --radius: 10px;
+  --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-data: ui-monospace, "SF Mono", "Cascadia Code", Consolas, monospace;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  padding-bottom: calc(68px + env(safe-area-inset-bottom));
+  min-height: 100vh;
+}
+
+/* ---- Top bar ---- */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  padding-top: calc(14px + env(safe-area-inset-top));
+  background: var(--primary);
+  color: #fff;
+}
+.brand { display: flex; align-items: center; gap: 10px; }
+.brand-mark {
+  font-family: var(--font-data);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  background: rgba(255,255,255,0.16);
+  border-radius: 6px;
+  padding: 4px 7px;
+}
+.brand-name {
+  font-weight: 700;
+  font-size: 17px;
+  letter-spacing: 0.2px;
+}
+.status-dot {
+  width: 9px; height: 9px; border-radius: 50%;
+  background: var(--red);
+  box-shadow: 0 0 0 3px rgba(255,255,255,0.15);
+  transition: background 0.2s;
+}
+.status-dot.online { background: #7FD08A; }
+
+/* ---- App content ---- */
+.app { padding: 16px; max-width: 640px; margin: 0 auto; }
+
+.eyebrow {
+  font-family: var(--font-data);
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin: 4px 0 10px;
+}
+
+h1.page-title {
+  font-size: 21px;
+  margin: 0 0 4px;
+  letter-spacing: -0.2px;
+}
+
+/* ---- Stat cards ---- */
+.stat-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 18px; }
+.stat-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 14px;
+}
+.stat-card .label { font-size: 11.5px; color: var(--ink-soft); letter-spacing: 0.3px; }
+.stat-card .value {
+  font-family: var(--font-data);
+  font-size: 22px;
+  font-weight: 700;
+  margin-top: 4px;
+  color: var(--primary);
+}
+
+/* ---- Section ---- */
+.section-title {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  margin: 22px 0 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.section-title .count-pill {
+  font-family: var(--font-data);
+  font-size: 11px;
+  background: var(--red-bg);
+  color: var(--red);
+  border-radius: 20px;
+  padding: 1px 8px;
+}
+
+/* ---- Item card (pesticide row) ---- */
+.item-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 12px 14px;
+  margin-bottom: 8px;
+}
+.item-top { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+.item-name { font-weight: 600; font-size: 15px; }
+.item-cat { font-size: 11.5px; color: var(--ink-soft); margin-top: 1px; }
+.item-price {
+  font-family: var(--font-data);
+  font-size: 14px;
+  color: var(--ink-soft);
+  white-space: nowrap;
+}
+
+/* Dosage gauge — signature element: a filled bar like a measuring scale,
+   colored by how full stock is relative to the low-stock line. */
+.gauge-row { display: flex; align-items: center; gap: 10px; margin-top: 10px; }
+.gauge {
+  flex: 1;
+  height: 8px;
+  border-radius: 4px;
+  background: var(--line);
+  overflow: hidden;
+  position: relative;
+}
+.gauge-fill { height: 100%; border-radius: 4px; transition: width 0.3s ease; }
+.gauge-fill.ok { background: var(--green); }
+.gauge-fill.low { background: var(--amber); }
+.gauge-fill.critical { background: var(--red); }
+.gauge-reading {
+  font-family: var(--font-data);
+  font-size: 12.5px;
+  font-weight: 700;
+  min-width: 64px;
+  text-align: right;
+}
+.gauge-reading.ok { color: var(--green); }
+.gauge-reading.low { color: var(--amber); }
+.gauge-reading.critical { color: var(--red); }
+
+.item-actions { display: flex; gap: 8px; margin-top: 10px; }
+
+/* ---- Buttons ---- */
+button { font-family: inherit; cursor: pointer; }
+.btn {
+  border: none;
+  border-radius: 8px;
+  padding: 9px 14px;
+  font-size: 13.5px;
+  font-weight: 600;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--ink);
+}
+.btn:active { transform: scale(0.97); }
+.btn-primary { background: var(--primary); color: #fff; border-color: var(--primary); }
+.btn-in { background: var(--green-bg); color: var(--green); border-color: transparent; }
+.btn-out { background: var(--red-bg); color: var(--red); border-color: transparent; }
+.btn-full { width: 100%; padding: 12px; font-size: 14.5px; }
+.btn-danger-text { background: none; border: none; color: var(--red); font-size: 12.5px; padding: 6px; }
+
+/* ---- Forms ---- */
+.field { margin-bottom: 14px; }
+.field label {
+  display: block;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--ink-soft);
+  margin-bottom: 5px;
+}
+.field input, .field select {
+  width: 100%;
+  padding: 11px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  font-size: 15px;
+  background: var(--surface);
+  color: var(--ink);
+  font-family: inherit;
+}
+.field input:focus, .field select:focus {
+  outline: 2px solid var(--primary-soft);
+  outline-offset: 1px;
+}
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+.type-toggle { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 14px; }
+.type-toggle button {
+  padding: 12px; border-radius: 8px; border: 2px solid var(--line);
+  background: var(--surface); font-weight: 700; font-size: 14px; color: var(--ink-soft);
+}
+.type-toggle button.selected.in { border-color: var(--green); color: var(--green); background: var(--green-bg); }
+.type-toggle button.selected.out { border-color: var(--red); color: var(--red); background: var(--red-bg); }
+
+/* ---- Search ---- */
+.search-bar { position: relative; margin-bottom: 14px; }
+.search-bar input {
+  width: 100%;
+  padding: 11px 12px 11px 36px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  font-size: 15px;
+  background: var(--surface);
+}
+.search-bar svg {
+  position: absolute; left: 11px; top: 50%; transform: translateY(-50%);
+  width: 16px; height: 16px; color: var(--ink-soft);
+}
+
+/* ---- Transaction list ---- */
+.txn-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 10px 0; border-bottom: 1px solid var(--line); font-size: 13.5px;
+}
+.txn-row:last-child { border-bottom: none; }
+.txn-tag {
+  font-family: var(--font-data); font-size: 11px; font-weight: 700;
+  padding: 2px 7px; border-radius: 5px; margin-right: 8px;
+}
+.txn-tag.IN { background: var(--green-bg); color: var(--green); }
+.txn-tag.OUT { background: var(--red-bg); color: var(--red); }
+.txn-meta { color: var(--ink-soft); font-size: 11.5px; }
+
+.empty-state {
+  text-align: center;
+  color: var(--ink-soft);
+  padding: 40px 20px;
+  font-size: 13.5px;
+}
+
+/* ---- Bottom tab bar ---- */
+.tabbar {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 20;
+  display: flex;
+  background: var(--surface);
+  border-top: 1px solid var(--line);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+.tab {
+  flex: 1;
+  display: flex; flex-direction: column; align-items: center; gap: 3px;
+  padding: 9px 0 8px;
+  border: none; background: none; color: var(--ink-soft);
+}
+.tab svg { width: 21px; height: 21px; }
+.tab span { font-size: 10.5px; font-weight: 600; }
+.tab.active { color: var(--primary); }
+
+/* ---- Toast ---- */
+.toast {
+  position: fixed;
+  bottom: calc(78px + env(safe-area-inset-bottom));
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: var(--ink);
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: 20px;
+  font-size: 13px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s, transform 0.25s;
+  z-index: 30;
+  white-space: nowrap;
+}
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+@media (min-width: 700px) {
+  .tabbar { max-width: 640px; left: 50%; transform: translateX(-50%); border-left: 1px solid var(--line); border-right: 1px solid var(--line); }
+}

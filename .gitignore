@@ -1,0 +1,8 @@
+build/
+*.db
+*.db-wal
+*.db-shm
+include/httplib.h
+include/json.hpp
+.vscode/
+.DS_Store

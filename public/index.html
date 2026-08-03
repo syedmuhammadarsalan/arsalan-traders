@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Arsalan Traders — Pesticide Inventory</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark">AT</span>
+    <span class="brand-name">Arsalan Traders</span>
+  </div>
+  <span id="statusDot" class="status-dot" title="Connection status"></span>
+</header>
+
+<main id="app" class="app"></main>
+
+<nav class="tabbar">
+  <button class="tab active" data-tab="dashboard">
+    <svg viewBox="0 0 24 24"><path d="M3 13h4v8H3zM10 3h4v18h-4zM17 8h4v13h-4z"/></svg>
+    <span>Dashboard</span>
+  </button>
+  <button class="tab" data-tab="inventory">
+    <svg viewBox="0 0 24 24"><path d="M4 4h16v4H4zM4 10h16v10H4z" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+    <span>Inventory</span>
+  </button>
+  <button class="tab" data-tab="add">
+    <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+    <span>Add</span>
+  </button>
+  <button class="tab" data-tab="stock">
+    <svg viewBox="0 0 24 24"><path d="M4 12h16M4 12l5-5M4 12l5 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span>Stock</span>
+  </button>
+</nav>
+
+<div id="toast" class="toast"></div>
+
+<script src="app.js"></script>
+</body>
+</html>

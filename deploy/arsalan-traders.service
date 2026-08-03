@@ -1,0 +1,15 @@
+[Unit]
+Description=Arsalan Traders Inventory Server
+After=network.target
+
+[Service]
+Type=simple
+# Update these two paths after you know your actual username/home directory on the server
+User=ubuntu
+WorkingDirectory=/home/ubuntu/arsalan-traders/build
+ExecStart=/home/ubuntu/arsalan-traders/build/arsalan_traders
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
